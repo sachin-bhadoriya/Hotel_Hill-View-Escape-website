@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.custom-form-container {
+  font-family: 'Poppins', sans-serif;
+  background: rgba(0, 0, 0, 0.9);
+  color: #FFD700;
+  padding: 1rem;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px #000000, 0px 0px 10px #1f1f1f;
+  max-width: 500px;
+  margin: 150px auto 100px auto;
+  transition: all 0.3s ease;
+}
+
+.custom-form-heading {
+  font-size: 1.8rem;
+  text-align: center;
+  color: #FFD700;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.custom-input {
+  width: 100%;
+  padding: 14px 18px;
+  background: #1a1a1a;
+  color: #FFD700;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  box-shadow: inset 3px 3px 6px #0a0a0a, inset -3px -3px 6px #2a2a2a;
+  transition: all 0.3s ease;
+  outline: none;
+  margin-bottom: 1rem;
+}
+
+.custom-input::placeholder {
+  color: #aaaaaa;
+}
+
+.custom-input:focus {
+  background: #222;
+  box-shadow: 0 0 0 2px #FFD700;
+}
+
+.custom-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #FFD700;
+}
+
+.custom-button {
+  width: 100%;
+  background: linear-gradient(145deg, #ffd700, #d4af37);
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 4px 4px 12px #000, -4px -4px 12px #333;
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(145deg, #ffe733, #f3c108);
+}
+
+.custom-message {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 500;
+  color: #00ff88;
+  text-shadow: 1px 1px 2px #000;
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import room_top from '../../../../assets/Images/inside/home_top.mp4'
 import './../../../CSSFile/FacilitiesCSS/Facilitiestop.css'
-
+import {Link} from 'react-router-dom'
 const Facilitiestop = () => {
   return (
     <>
@@ -25,7 +25,7 @@ const Facilitiestop = () => {
             <p data-aos="slide-right" className='home_top_para'>Discover unmatched elegance, peaceful surroundings, and personalized luxury — all in the heart of nature.</p>
           </div>
           <div className="home_top_btn">
-            <button><span>BOOK NOW</span></button>
+           <Link to="/room-booking"><button><span>BOOK NOW</span></button></Link>
           </div>
         </div>
       </div>

@@ -10,10 +10,10 @@ const App = () => {
   return (
     <Router>
       <div className="p-4">
-        <nav className="mb-4">
-          <Link to="/book" className="mr-4">Book Room</Link>
-          <Link to="/cancel" className="mr-4">Cancel Booking</Link>
-          <Link to="/bookings">View Bookings</Link>
+        <nav className="mb-4 nav-admin">
+          <Link to="/book" className="mx-2 gap-2 mr-4">Book Room</Link>
+          <Link to="/cancel" className="mx-2 gap-2 mr-4">Cancel Booking</Link>
+          <Link to="/bookings" className="mx-2 gap-2 mr-4">View Bookings</Link>
         </nav>
         <Routes>
           <Route path="/book" element={<BookRoom />} />

@@ -16,43 +16,63 @@ exports.initializeRooms = async (req, res) => {
     res.send("Rooms already initialized");
   }
 };
-
-// room bookking
 exports.bookRoom = async (req, res) => {
-  const { fromDate, toDate, name, phone_no } = req.body;
+  try {
+    const { fromDate, toDate, name, phone_no } = req.body;
 
-  const allRooms = await Room.find();
-  for (let room of allRooms) {
-    const overlapping = await Booking.findOne({
-      room: room._id,
-      $or: [
-        {
-          fromDate: { $lte: new Date(toDate) },
-          toDate: { $gte: new Date(fromDate) },
-        },
-      ],
-    });
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-    if (!overlapping) {
-      const newBooking = new Booking({
-        room: room._id,
-        fromDate,
-        toDate, 
-        name, 
-        phone_no,
-      });
-      await newBooking.save();
-      return res.status(200).json({
-        message: `Congrats Room booked successfully.`,
-        "Your Id": `${room._id} please submit this in hotel`,
-        "Room Number": room.roomNumber,
-        Name : name, 
-        "Contact No.": phone_no
-      });
+    const start = new Date(fromDate);
+    const end = new Date(toDate);
+
+    if (start < today || end < today) {
+      return res.status(400).json({ message: "Cannot book for past dates" });
     }
-  }
 
-  res.status(400).json({ message: "No rooms available for given dates" });
+    if (start > end) {
+      return res.status(400).json({ message: "'From' date cannot be after 'To' date" });
+    }
+
+    const allRooms = await Room.find();
+
+    for (let room of allRooms) {
+      const overlapping = await Booking.findOne({
+        room: room._id,
+        $or: [
+          {
+            fromDate: { $lte: new Date(toDate) },
+            toDate: { $gte: new Date(fromDate) },
+          },
+        ],
+      });
+
+      if (!overlapping) {
+        const newBooking = new Booking({
+          room: room._id,
+          fromDate,
+          toDate,
+          name,
+          phone_no,
+        });
+
+        await newBooking.save();
+        return res.status(200).json({
+          message: `Congrats Room booked successfully.`,
+          "Your Id": `${room._id} please submit this in hotel`,
+          "Room Number": room.roomNumber,
+          Name: name,
+          "Contact No.": phone_no,
+        });
+      }
+    }
+
+    res.status(400).json({ message: "No rooms available for given dates" });
+
+  } catch (err) {
+    console.error("🔥 Booking Error:", err);
+    res.status(500).json({ message: "Internal Server Error", error: err.message });
+  }
 };
 
 // room availability
@@ -98,12 +118,13 @@ exports.cancelBooking = async (req, res) => {
   }
 };
 
-
-
-// fetch all booking
+// fetch all bookings
 exports.getAllBookings = async (req, res) => {
   try {
-    const bookings = await Booking.find().populate("room");
+    const bookings = await Booking.find()
+      .populate("room")
+      .sort({ createdAt: -1 });  // 👈 Latest first
+
     res.status(200).json(bookings);
   } catch (error) {
     res.status(500).json({ message: "Error fetching bookings", error: error.message });

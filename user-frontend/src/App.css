@@ -1,6 +1,11 @@
 .home_top_btn button {
     padding: 20px;
 }
+.home_top_btn button a{
+    text-decoration: none;
+    color: #ffd700;
+
+}
 
 .main-page {
     overflow: hidden;
@@ -80,8 +85,9 @@
   
   .home_top_btn button:hover {
       box-shadow: 0 0 15px rgba(246, 220, 73, 0.8);
-      color: black;
+      color: black !important;
     }
+
     
     .home_top_btn button span {
     position: relative;

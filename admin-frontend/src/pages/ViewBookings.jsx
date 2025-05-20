@@ -18,7 +18,7 @@ const ViewBookings = () => {
   }, []);
 
   return (
-    <div className="p-4">
+    <div className="p-4 booking-info-admin d-flex  border border-2 border-warning p-3 rounded">
       <h2 className="text-xl font-bold mb-2">All Bookings</h2>
       <table className="table-auto w-full border">
         <thead>

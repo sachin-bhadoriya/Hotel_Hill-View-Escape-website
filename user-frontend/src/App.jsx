@@ -8,6 +8,7 @@ import Home from './Components/JSXFiles/Home/Home'
 import Facilities from './Components/JSXFiles/Facilities/Facilities'
 import Rooms from './Components/JSXFiles/Rooms/Rooms';
 import Contact from './Components/JSXFiles/Contact/Contact';
+import Book from './Components/JSXFiles/RoomBooking/Booking';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
@@ -85,6 +86,7 @@ const App = () => {
           <Route path="/Facilities" element={<Facilities />} />
           <Route path="/Rooms" element={<Rooms />} />
           <Route path="/Contact" element={<Contact />} />
+          <Route path="/room-booking" element={<Book />} />
         </Routes>
         {/* <button onClick={toggleTheme}>Toggle Theme</button> */}
         <Footer />
