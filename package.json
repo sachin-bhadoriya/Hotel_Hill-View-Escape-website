@@ -1,0 +1,25 @@
+{
+  "name": "hotel_view_escape-complete-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "npm --prefix backend install && npm --prefix user-frontend install && npm --prefix admin-frontend install",
+    "dev": "concurrently \"npm --prefix backend run dev\" \"npm --prefix user-frontend run dev\" \"npm --prefix admin-frontend start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sachin-bhadoriya/Hotel_View_Escape-Complete-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sachin-bhadoriya/Hotel_View_Escape-Complete-website/issues"
+  },
+  "homepage": "https://github.com/sachin-bhadoriya/Hotel_View_Escape-Complete-website#readme",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
