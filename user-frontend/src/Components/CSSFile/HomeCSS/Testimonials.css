@@ -1,0 +1,101 @@
+.testimonial-wrapper {
+    max-width: 600px;
+    margin:  auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.testimonial-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    font-family: "Playfair Display", serif;
+}
+
+.testimonial-wrapper h2 span::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    margin-top: 10px;
+    background: #f6dc49;
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+    transform-origin: center;
+}
+
+.testimonial-wrapper h2 span:hover::after {
+    transform: scaleX(1);
+}
+
+.testimonial-card {
+    background-color: transparent;
+    padding: 0px 20px 25px 20px;
+    margin-top: 20px;
+}
+
+.testimonial-message {
+    font-size: 1rem;
+    color: #444;
+    margin: 5px auto 15px auto;
+    font-family: "Nunito", sans-serif;
+}
+.testimonial-image-box {
+    width: 100%;
+    /* height: 200px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0px 100px 10px 100px;
+}
+.testimonial-image {
+    width: 150px; 
+    height: 150px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.testimonial-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+.testimonial-image:hover img {
+    transform: scale(1.1);
+}
+
+.testimonial-name {
+    font-size: 1.2rem;
+    font-family: "Great Vibes", serif;
+    color: #888;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+/* Mobile Devices (max width 767px) */
+@media screen and (max-width: 767px) {
+    .testimonial-image-box {
+        padding: 0;
+    }
+    .testimonial-image {
+        width: 200px; 
+        height: 200px;
+        border-radius: 10px;
+    }
+    .testimonial-card {
+        background-color: transparent;
+        /* padding: 25px 20px; */
+    }
+}
+
+/* Tablet Devices (768px to 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .testimonial-card {
+        background-color: #fff;
+        padding: 0px 20px 25px 20px;
+    }
+    
+}

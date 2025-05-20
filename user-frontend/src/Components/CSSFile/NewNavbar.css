@@ -1,0 +1,187 @@
+.mobile_navbar_container_main{
+    display: none;
+}
+.navbar_container_main{
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    top: 0;
+    padding: 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3px);
+}
+.navbar .tittle{
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    align-items: center;
+    
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+}
+.navbar ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 50px;
+    font-family: "Cinzel", serif;
+    font-weight: 500;
+}
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+}
+.navbar button{
+    align-items: end;
+    font-family: "Quicksand", serif;
+    font-size: 1rem;
+    padding: 10px 25px;
+    border: 0;
+    outline: 0;
+    background-color: rgb(255,215,0);
+    border-radius: 5px;
+    transition: box-shadow 0.2s ease-in-out;
+}
+.navbar button a{
+    text-decoration: none;
+    color: black;
+
+}
+.navbar button:hover{
+    box-shadow: 0px 0px 15px rgba(255, 255, 0, 0.7), 0px 0px 20px rgba(255, 255, 0, 0.5);
+    cursor: pointer;
+}
+
+.active .link-active{
+    text-decoration: underline;
+    color: rgb(255, 215, 0);
+}
+.active .link-deactive{
+    text-decoration: none;
+    color: white;
+
+}
+
+
+/* for mobile */
+@media screen and (max-width: 750px) {
+    .navbar_container_main{
+        display: none;
+    }
+    .mobile_navbar_container_main{
+        display: block;
+        position: relative;
+        z-index: 999;
+        color: white;
+    }
+    .mobile_navbar{
+        position: absolute;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.1   );
+        backdrop-filter: blur(5px);
+        padding: 20px;
+    }
+    .mobile_navbar button{
+        align-items: end;
+        font-family: "Quicksand", serif;
+        font-size: 1rem;
+        padding: 10px 25px;
+        border: 0;
+        outline: 0;
+        background-color: rgb(255,215,0);
+        border-radius: 5px;
+        width: 100%;
+        transition: box-shadow 0.2s ease-in-out;
+    }
+    .mobile_navbar button a {
+        text-decoration: none;
+        color: black;
+
+    }
+    .mobile_navbar button:hover{
+        box-shadow: 0px 0px 15px rgba(255, 255, 0, 0.7), 0px 0px 20px rgba(255, 255, 0, 0.5);
+        cursor: pointer;
+    }
+    .mobile_navbar ul li {
+        align-items: center;
+        list-style: none;
+        gap: 50px;
+        font-family: "Cinzel", serif;
+        font-weight: 500;
+        padding: 30px;
+    }
+    .mobile_navbar .tittle{
+        font-family: "Montserrat", sans-serif;
+        display: flex;
+        align-items: center;
+        
+    }
+    .mobile_navbar ul li a {
+        text-decoration: none;
+        color: white;
+    }
+    .mobile_navbar .menu_icon_mobile_nav img, .close_icon_mobile_nav img{
+        width: 24px;  
+        height: 24px;
+        filter: invert(1)
+    }
+    .show_element_nav{
+        position: relative;
+        padding: 15px;
+        /* background: rgba(0, 0, 0, 1   );
+        backdrop-filter: blur(5px); */
+    }
+    .close_icon_mobile_nav{
+        position: absolute;
+        right: 15px;
+        top: 4px;
+    }
+    .menu_icon_mobile_nav{
+        position: absolute;
+        right: 15px;
+        top: 4px;
+    }
+    .tittle{
+        position: absolute;
+        left: 15px;
+        top: 4px;
+
+    }
+    .mobile_navbar .hide{
+        display: none;
+    }
+    .mobile_navbar .show{
+        display: block;
+    }
+    .menu_toggle_icon img {
+        width: 28px;
+        height: 28px;
+        filter: invert(1);
+      }
+      
+      .menu_toggle_icon:hover img {
+        transform: rotate(90deg); /* optional fun animation */
+      }
+      
+      .mobile_menu_box {
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.4s ease, opacity 0.3s ease;
+      }
+      
+      .menu-open {
+        max-height: 500px; /* adjust as needed */
+        opacity: 1;
+        transition: max-height 0.4s ease, opacity 0.3s ease;
+      }
+      
+      .menu-closed {
+        max-height: 0;
+        opacity: 0;
+      }
+ }
+  
+  

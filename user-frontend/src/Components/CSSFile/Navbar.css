@@ -1,0 +1,140 @@
+.navbarlist {
+  display: flex;
+  gap: 40px;
+  position: fixed;
+  /* top: 30px;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+  z-index: 999;
+}
+
+.laptop-view-navbar .navbarlist {
+  background: linear-gradient(rgba(26, 25, 25, 0.7), rgba(26, 25, 25, 0));
+  /* padding: 10px; */
+  /* border-radius: 10px; */
+  color: white;
+  width: 100%;
+  text-align: center;
+  padding-left: 15px;
+  margin: auto;
+}
+
+.navbarlist li:nth-child(1) {
+  background-color: yellow;
+  color: black;
+  border-radius: 0 0 10px 10px;
+}
+
+.navbarlist li:nth-child(1):hover {
+  text-decoration: none;
+}
+
+
+.navbarlist li {
+  color: white;
+  list-style: none;
+  padding: 20px;
+  background-color: transparent;
+  font-family: "Balthazar", serif;
+  font-size: 1.2rem;
+}
+
+.navbarlist li a {
+  text-decoration: none;
+  color: white;
+}
+
+.navbarlist li:hover {
+  text-decoration: underline;
+}
+
+.narbarmain {
+  text-align: center;
+}
+
+.navbarlist li .link-active {
+  text-decoration: underline;
+  color: #FFD700;
+}
+
+.mobile-view-navbar{
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+/* mobile nav */
+
+
+/* Mobile Devices (max width 767px) */
+@media screen and (max-width: 767px) {
+  .laptop-view-navbar {
+    display: none;
+  }
+  .mobile-view-navbar{
+    display: block;
+  }
+  .mobile-view-navbar {
+    position: relative;
+    width: 100%;
+    z-index: 9999;
+    color: white;
+  }
+
+  .mobile-view {
+    padding: 15px;
+    background: linear-gradient(rgba(26, 25, 25, 0.7), rgba(26, 25, 25, 0));
+    position: fixed;
+    width: 100%;
+  }
+
+  .mobile-nav-icon {
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+  }
+
+  .mobile-view-navbar-hidden {
+    display: none;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 2s ease;
+  }
+
+  .mobile-view-navbar-show {
+    display: block;
+    opacity: 1;
+    max-height: 700px;
+    transition: max-height 0.5s ease-in, opacity 2s ease-in;
+  }
+
+  .mobile-view-navbar li {
+    list-style: none;
+  }
+
+  .mobile-view-navbar li a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .mobile-view li .link-active {
+    text-decoration: underline;
+    color: #FFD700;
+  }
+
+  .mobile-view-navbar-show li {
+    padding: 10px 0;
+  }
+
+  .mobile-view-navbar-hidden li {
+    padding: 0;
+  }
+
+}
