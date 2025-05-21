@@ -7,7 +7,7 @@ exports.initializeRooms = async (req, res) => {
   const count = await Room.countDocuments();
   if (count === 0) {
     let rooms = [];
-    for (let i = 1; i <= 100; i++) {
+    for (let i = 1; i <= 10; i++) {
       rooms.push({ roomNumber: i });
     }
     await Room.insertMany(rooms);
@@ -107,7 +107,10 @@ exports.cancelBooking = async (req, res) => {
       return res.status(404).json({ message: "Booking not found" });
     }
 
-    await Booking.findByIdAndDelete(bookingId);
+    // await Booking.findByIdAndDelete(bookingId);
+    booking.isCancelled = true;
+    booking.cancelledAt = new Date();
+    await booking.save();
 
     res.status(200).json({
       message: "Booking cancelled successfully",
@@ -130,3 +133,17 @@ exports.getAllBookings = async (req, res) => {
     res.status(500).json({ message: "Error fetching bookings", error: error.message });
   }
 };
+
+// fetch cancelled bookings
+exports.getCancelledBookings = async (req, res) => {
+  try {
+    const cancelledBookings = await Booking.find({ isCancelled: true })
+      .populate("room")
+      .sort({ cancelledAt: -1 });
+
+    res.status(200).json(cancelledBookings);
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching cancellation history", error: err.message });
+  }
+};
+

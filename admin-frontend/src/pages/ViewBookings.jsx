@@ -26,6 +26,7 @@ const ViewBookings = () => {
             <th className="border px-4 py-2">Rooms</th>
             <th className="border px-4 py-2">Name</th>
             <th className="border px-4 py-2">Phone</th>
+            <th className="border px-4 py-2">Id for Cancel Booking</th>
             <th className="border px-4 py-2">From</th>
             <th className="border px-4 py-2">To</th>
           </tr>
@@ -43,8 +44,9 @@ const ViewBookings = () => {
               </td>
               <td className="border px-4 py-2">{b.name}</td>
               <td className="border px-4 py-2">{b.phone_no}</td>
-              <td className="border px-4 py-2">{b.fromDate}</td>
-              <td className="border px-4 py-2">{b.toDate}</td>
+              <td className="border px-4 py-2">{b._id}</td>
+              <td className="border px-4 py-2">{new Date(b.fromDate).toLocaleString()}</td>
+              <td className="border px-4 py-2">{new Date(b.toDate).toLocaleString()}</td>
             </tr>
           ))}
         </tbody>
