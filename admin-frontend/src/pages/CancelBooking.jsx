@@ -47,20 +47,27 @@ const CancelBooking = () => {
       <table className="w-full border">
         <thead>
           <tr className="bg-gray-200">
+            <th className="p-2 border">Room no.</th>
             <th className="p-2 border">Booking ID</th>
             <th className="p-2 border">User</th>
             <th className="p-2 border">phone no.</th>
-            <th className="p-2 border">Room</th>
             <th className="p-2 border">Cancelled On</th>
           </tr>
         </thead>
         <tbody>
           {history.map((item, index) => (
             <tr key={index} className="text-center">
+               <td className="border px-4 py-2">
+                {
+                  // ✅ Room object ya array handle kar rahe:
+                  Array.isArray(item.room)
+                    ? item.room.map((r, idx) => <div key={idx}>{r.roomNumber}</div>)
+                    : item.room?.roomNumber || "N/A"
+                }
+              </td>
               <td className="border p-2">{item._id}</td>
               <td className="border p-2">{item.name || "N/A"}</td>
               <td className="border p-2">{item.phone_no || "N/A"}</td>
-              <td className="border p-2">{item.roomNumber || "N/A"}</td>
               <td className="border p-2">{new Date(item.cancelledAt).toLocaleString()}</td>
             </tr>
           ))}
