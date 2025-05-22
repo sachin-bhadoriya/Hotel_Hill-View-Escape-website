@@ -1,107 +1,177 @@
-import api from "../../../api/axios"
 import React, { useState } from "react";
-import '../../CSSFile/Booking.css'
+import axios from "axios";
 
-export const bookRoom = (data) => api.post("/rooms/book", data);
-
-const BookRoom = () => {
-  const today = new Date().toISOString().split('T')[0];
-
+const Booking = () => {
   const [form, setForm] = useState({
-    name: "",
-    phone_no: "",
-    fromDate: today,
-    toDate: today,
+    fullName: "",
+    phoneNumber: "",
+    email: "",
+    numberOfGuests: 1,
+    roomType: "Deluxe",
+    fromDate: "",
+    toDate: "",
+    specialRequests: "",
+    paymentMethod: "Online",
   });
 
-  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Basic validation
+    if (
+      !form.fullName ||
+      !form.phoneNumber ||
+      !form.email ||
+      !form.numberOfGuests ||
+      !form.roomType ||
+      !form.fromDate ||
+      !form.toDate ||
+      !form.paymentMethod
+    ) {
+      alert("Please fill all required fields");
+      return;
+    }
+
+    setLoading(true);
     try {
-      const res = await bookRoom(form);
-      setMessage(res.data.message);
-      const today = new Date().toISOString().split("T")[0];
+      const res = await axios.post("http://localhost:5000/api/bookings/book", form);
+      alert(res.data.message);
       setForm({
-        name: "",
-        phone_no: "",
-        fromDate: today,
-        toDate: today,
+        fullName: "",
+        phoneNumber: "",
+        email: "",
+        numberOfGuests: 1,
+        roomType: "Deluxe",
+        fromDate: "",
+        toDate: "",
+        specialRequests: "",
+        paymentMethod: "Online",
       });
-    } catch (err) {
-      setMessage(err.response?.data?.message || "Booking failed");
-      console.error(err);
+    } catch (error) {
+      alert("Failed to book room");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="p-4 book-room custom-form-container">
-      <h2 className="text-xl text-center font-bold mb-4 custom-form-heading">
-        Book a Room
-      </h2>
-      <div className="booking-room-form">
-
-        <div className="mb-3">
-          <input
-            name="name"
-            placeholder="Name"
-            value={form.name}
-            onChange={handleChange}
-            className="custom-input"
-          />
-        </div>
-
-        <div className="mb-3">
-          <input
-            name="phone_no"
-            placeholder="Phone"
-            value={form.phone_no}
-            onChange={handleChange}
-            className="custom-input"
-          />
-        </div>
-      </div>
-
-      <div className="mb-3">
-        <label className="custom-label">From Date</label>
+    <form className="room-booking-page" onSubmit={handleSubmit}>
+      <label>
+        Full Name*:
         <input
-          name="fromDate"
+          type="text"
+          name="fullName"
+          value={form.fullName}
+          onChange={handleChange}
+          required
+        />
+      </label>
+      <br /><br />
+
+      <label>
+        Phone Number*:
+        <input
+          type="text"
+          name="phoneNumber"
+          value={form.phoneNumber}
+          onChange={handleChange}
+          required
+        />
+      </label>
+      <br /><br />
+
+      <label>
+        Email*:
+        <input
+          type="email"
+          name="email"
+          value={form.email}
+          onChange={handleChange}
+          required
+        />
+      </label>
+      <br /><br />
+
+      <label>
+        Number of Guests*:
+        <input
+          type="number"
+          name="numberOfGuests"
+          min="1"
+          value={form.numberOfGuests}
+          onChange={handleChange}
+          required
+        />
+      </label>
+      <br /><br />
+
+      <label>
+        Room Type*:
+        <select name="roomType" value={form.roomType} onChange={handleChange} required>
+          <option value="Deluxe">Deluxe</option>
+          <option value="Suite">Suite</option>
+          <option value="AC">AC</option>
+          <option value="Non-AC">Non-AC</option>
+        </select>
+      </label>
+      <br /><br />
+
+      <label>
+        From Date*:
+        <input
           type="date"
+          name="fromDate"
           value={form.fromDate}
           onChange={handleChange}
-          className="custom-input"
+          required
         />
-      </div>
+      </label>
+      <br /><br />
 
-      <div className="mb-3">
-        <label className="custom-label">To Date</label>
+      <label>
+        To Date*:
         <input
-          name="toDate"
           type="date"
+          name="toDate"
           value={form.toDate}
           onChange={handleChange}
-          className="custom-input"
+          required
         />
-      </div>
+      </label>
+      <br /><br />
 
-      <button
-        onClick={handleSubmit}
-        className="custom-button"
-      >
-        Book
+      <label>
+        Special Requests:
+        <textarea
+          name="specialRequests"
+          value={form.specialRequests}
+          onChange={handleChange}
+          placeholder="Optional"
+        />
+      </label>
+      <br /><br />
+
+      <label>
+        Payment Method*:
+        <select name="paymentMethod" value={form.paymentMethod} onChange={handleChange} required>
+          <option value="Online">Online</option>
+          <option value="Offline">Offline</option>
+        </select>
+      </label>
+      <br /><br />
+
+      <button type="submit" disabled={loading}>
+        {loading ? "Booking..." : "Book Room"}
       </button>
-
-      {message && (
-        <p className="custom-message mt-4">{message}</p>
-      )}
-    </div>
-
+    </form>
   );
 };
 
-export default BookRoom;
-
-
+export default Booking;

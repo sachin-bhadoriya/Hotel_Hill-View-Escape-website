@@ -30,21 +30,21 @@ import CookieConsent from './Components/JSXFiles/OtherElements/CookieConsent';
 
 const App = () => {
 
-  useEffect(() => {
-    // Disable Right Click
-    document.addEventListener('contextmenu', (e) => {
-      e.preventDefault();
-      alert("Right-click is disabled on this page!");
-    });
+  // useEffect(() => {
+  //   // Disable Right Click
+  //   document.addEventListener('contextmenu', (e) => {
+  //     e.preventDefault();
+  //     alert("Right-click is disabled on this page!");
+  //   });
 
-    // Disable F12 & Ctrl+Shift+I
-    document.onkeydown = function (e) {
-      if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && e.keyCode === 73)) {
-        alert("DevTools are disabled on this page!");
-        return false;
-      }
-    };
-  }, []);
+  //   // Disable F12 & Ctrl+Shift+I
+  //   document.onkeydown = function (e) {
+  //     if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && e.keyCode === 73)) {
+  //       alert("DevTools are disabled on this page!");
+  //       return false;
+  //     }
+  //   };
+  // }, []);
 
 
 
