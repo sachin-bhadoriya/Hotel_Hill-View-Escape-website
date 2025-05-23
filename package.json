@@ -2,11 +2,19 @@
   "name": "hotel_view_escape-complete-website",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "install-all": "npm --prefix backend install && npm --prefix user-frontend install && npm --prefix admin-frontend install",
-    "dev": "concurrently \"npm --prefix backend run dev\" \"npm --prefix user-frontend run dev\" \"npm --prefix admin-frontend start\""
+    "install-all": "npm install --workspaces",
+    "dev": "concurrently \"npm:start-user\" \"npm:start-admin\" \"npm:start-backend\"",
+    "start-user": "npm --workspace user-frontend start",
+    "start-admin": "npm --workspace admin-frontend run dev",
+    "start-backend": "npm --workspace backend run dev"
   },
+  "workspaces": [
+    "backend",
+    "user-frontend",
+    "admin-frontend"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sachin-bhadoriya/Hotel_View_Escape-Complete-website.git"
