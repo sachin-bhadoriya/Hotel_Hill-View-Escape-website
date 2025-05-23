@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import '../../CSSFile/RoomBooking.css'
 const Booking = () => {
   const [form, setForm] = useState({
     fullName: "",
@@ -62,115 +62,121 @@ const Booking = () => {
   };
 
   return (
-    <form className="room-booking-page" onSubmit={handleSubmit}>
-      <label>
-        Full Name*:
-        <input
-          type="text"
-          name="fullName"
-          value={form.fullName}
-          onChange={handleChange}
-          required
-        />
-      </label>
-      <br /><br />
+    <>
+      <div className="room-booking-head"><h1>Book your Room,</h1><h3 className="">give us a chance to serve</h3></div>
+      <div className="container">
+        <div className="row">
+          {/* <div className="col-sm-6 video-space"></div>
+          <div className="col-sm-6 video-space"></div> */}
+        </div>
+      </div>
 
-      <label>
-        Phone Number*:
-        <input
-          type="text"
-          name="phoneNumber"
-          value={form.phoneNumber}
-          onChange={handleChange}
-          required
-        />
-      </label>
-      <br /><br />
 
-      <label>
-        Email*:
-        <input
-          type="email"
-          name="email"
-          value={form.email}
-          onChange={handleChange}
-          required
-        />
-      </label>
-      <br /><br />
+      <div className="container">
+        <form className="booking-form" onSubmit={handleSubmit}>
+          <div className="form-grid">
+            <div className="form-group">
+              <label>Full Name*</label>
+              <input
+                type="text"
+                name="fullName"
+                value={form.fullName}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-      <label>
-        Number of Guests*:
-        <input
-          type="number"
-          name="numberOfGuests"
-          min="1"
-          value={form.numberOfGuests}
-          onChange={handleChange}
-          required
-        />
-      </label>
-      <br /><br />
+            <div className="form-group">
+              <label>Phone Number*</label>
+              <input
+                type="text"
+                name="phoneNumber"
+                value={form.phoneNumber}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-      <label>
-        Room Type*:
-        <select name="roomType" value={form.roomType} onChange={handleChange} required>
-          <option value="Deluxe">Deluxe</option>
-          <option value="Suite">Suite</option>
-          <option value="AC">AC</option>
-          <option value="Non-AC">Non-AC</option>
-        </select>
-      </label>
-      <br /><br />
+            <div className="form-group">
+              <label>Email*</label>
+              <input
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-      <label>
-        From Date*:
-        <input
-          type="date"
-          name="fromDate"
-          value={form.fromDate}
-          onChange={handleChange}
-          required
-        />
-      </label>
-      <br /><br />
+            <div className="form-group">
+              <label>Number of Guests*</label>
+              <input
+                type="number"
+                name="numberOfGuests"
+                min="1"
+                value={form.numberOfGuests}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-      <label>
-        To Date*:
-        <input
-          type="date"
-          name="toDate"
-          value={form.toDate}
-          onChange={handleChange}
-          required
-        />
-      </label>
-      <br /><br />
+            <div className="form-group full">
+              <label>Room Type*</label>
+              <select name="roomType" value={form.roomType} onChange={handleChange} required>
+                <option value="Deluxe">Deluxe</option>
+                <option value="Suite">Suite</option>
+                <option value="AC">AC</option>
+                <option value="Non-AC">Non-AC</option>
+              </select>
+            </div>
 
-      <label>
-        Special Requests:
-        <textarea
-          name="specialRequests"
-          value={form.specialRequests}
-          onChange={handleChange}
-          placeholder="Optional"
-        />
-      </label>
-      <br /><br />
+            <div className="form-group">
+              <label>From Date*</label>
+              <input
+                type="date"
+                name="fromDate"
+                value={form.fromDate}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-      <label>
-        Payment Method*:
-        <select name="paymentMethod" value={form.paymentMethod} onChange={handleChange} required>
-          <option value="Online">Online</option>
-          <option value="Offline">Offline</option>
-        </select>
-      </label>
-      <br /><br />
+            <div className="form-group">
+              <label>To Date*</label>
+              <input
+                type="date"
+                name="toDate"
+                value={form.toDate}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-      <button type="submit" disabled={loading}>
-        {loading ? "Booking..." : "Book Room"}
-      </button>
-    </form>
+            <div className="form-group full">
+              <label>Special Requests</label>
+              <textarea
+                name="specialRequests"
+                value={form.specialRequests}
+                onChange={handleChange}
+                placeholder="Optional"
+              />
+            </div>
+
+            <div className="form-group full">
+              <label>Payment Method*</label>
+              <select name="paymentMethod" value={form.paymentMethod} onChange={handleChange} required>
+                <option value="Online">Online</option>
+                <option value="Offline">Offline</option>
+              </select>
+            </div>
+
+            <button type="submit" disabled={loading}>
+              {loading ? "Booking..." : "Book Room"}
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 };
 
